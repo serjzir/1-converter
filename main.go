@@ -2,33 +2,42 @@ package main
 
 import "fmt"
 
-func main() {
-	// Константы конвертации валют
-	const usdToEur = 0.92  // 1 USD = 0.92 EUR
-	const usdToRub = 98.50 // 1 USD = 98.50 RUB
+// Константы конвертации валют
+const usdToEur = 0.92  // 1 USD = 0.92 EUR
+const usdToRub = 98.50 // 1 USD = 98.50 RUB
 
+// Функция для считывания ввода пользователя
+func readAmount() float64 {
+	var amount float64
+	fmt.Print("Введите сумму для конвертации: ")
+	fmt.Scan(&amount)
+	return amount
+}
+
+// Функция для конвертации валют
+func convertCurrency(amount float64, fromCurrency, toCurrency string) float64 {
+	return 0
+}
+
+func main() {
 	// Курс EUR к RUB (рассчитывается через USD)
 	eurToRub := usdToRub / usdToEur
 
-	// Пример конвертации
-	var usdAmount float64 = 100.0
-
-	eurAmount := usdAmount * usdToEur
-	rubAmount := usdAmount * usdToRub
-
-	// Вывод результатов
+	// Вывод курсов
 	fmt.Println("=== Калькулятор конвертации валют ===")
 	fmt.Printf("Курсы:\n")
 	fmt.Printf("1 USD = %.2f EUR\n", usdToEur)
 	fmt.Printf("1 USD = %.2f RUB\n", usdToRub)
 	fmt.Printf("1 EUR = %.2f RUB (рассчитано)\n\n", eurToRub)
 
-	fmt.Printf("Конвертация %.2f USD:\n", usdAmount)
-	fmt.Printf("-> %.2f EUR\n", eurAmount)
-	fmt.Printf("-> %.2f RUB\n", rubAmount)
+	// Считывание ввода от пользователя
+	amount := readAmount()
 
-	// Конвертация EUR в RUB
-	var eurAmount2 float64 = 50.0
-	rubFromEur := eurAmount2 * eurToRub
-	fmt.Printf("\n%.2f EUR = %.2f RUB\n", eurAmount2, rubFromEur)
+	// Вызов пустой функции (пока возвращает 0)
+	result := convertCurrency(amount, "USD", "EUR")
+	fmt.Printf("%.2f USD = %.2f EUR (результат пустой функции)\n", amount, result)
+
+	// Конвертация USD → RUB через пустую функцию
+	resultRub := convertCurrency(amount, "USD", "RUB")
+	fmt.Printf("%.2f USD = %.2f RUB (результат пустой функции)\n", amount, resultRub)
 }
